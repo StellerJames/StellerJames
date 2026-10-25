@@ -18,3 +18,5 @@ jobs:
       - uses: actions/checkout@v4
       # Step 2: run the git-bonsai action, which grows and saves the tree
       - uses: egorthinks/git-bonsai@v1
+        with:         
+          github-token: ${{ secrets.BONSAI_TOKEN }}
