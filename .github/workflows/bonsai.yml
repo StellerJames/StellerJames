@@ -1,3 +1,4 @@
+# git-bonsai workflow
 name: bonsai
 on:
   schedule:
