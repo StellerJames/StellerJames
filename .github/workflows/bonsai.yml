@@ -1,0 +1,19 @@
+name: bonsai
+on:
+  schedule:
+    # cron is a schedule written as five numbers. 
+    # This one essentially means "regrow at 03:00 UTC every day".
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  grow:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: copy repository's files onto VM
+      - uses: actions/checkout@v4
+      # Step 2: run the git-bonsai action, which grows and saves the tree
+      - uses: egorthinks/git-bonsai@v1
