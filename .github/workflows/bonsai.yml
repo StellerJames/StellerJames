@@ -1,22 +1,32 @@
-# git-bonsai workflow
 name: bonsai
+
 on:
   schedule:
-    # cron is a schedule written as five numbers. 
-    # This one essentially means "regrow at 03:00 UTC every day".
-    - cron: '0 3 * * *'
-  workflow_dispatch:
+    - cron: '0 3 * * *'   # Run every day at 3:00 AM UTC
+  workflow_dispatch:       # Lets you start a run by hand
 
 permissions:
-  contents: write
+  contents: write          
 
 jobs:
   grow:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     steps:
-      # Step 1: copy repository's files onto VM
+      # Step 1: Download a copy of your repo onto VM
       - uses: actions/checkout@v4
-      # Step 2: run the git-bonsai action, which grows and saves the tree
+
+      # Step 2: Grow the bonsai images, but don't push them yet
       - uses: egorthinks/git-bonsai@v1
-        with:         
+        with:
           github-token: ${{ secrets.BONSAI_TOKEN }}
+          commit: false
+
+      # Step 3: Save the images and push them, pulling in any new commits first
+      - name: Commit and push safely
+        run: |
+          git config user.name "bonsai-bot"
+          git config user.email "bonsai-bot@users.noreply.github.com"
+          git add output
+          git commit -m "chore: tend the bonsai 🌳" || echo "Nothing new to commit"
+          git pull --rebase origin main
+          git push origin main
