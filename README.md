@@ -1,6 +1,6 @@
 Hey there, I'm Aza. I'm a former art educator who is now pivoting into software development. I like to think that I bring a designer's eye and a teacher's patience to my code. I'm currently building my capstone project, an app for backyard birding, and collecting far too many browser tabs while I'm at it. ;)
 
-🧠 Skills: Figma, HTML, CSS, Bootstrap, Blazor, XAML, C#, MySQL, and JavaScript.
+🧠 Skills: Figma, HTML, CSS, Bootstrap, .NET, C#, MySQL, and JavaScript.
 
 📖 Interests: Contemporary Art, Community Engagement, Birding, Hiking, and Reading.
 
